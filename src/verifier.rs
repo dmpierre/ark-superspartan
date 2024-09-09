@@ -86,10 +86,11 @@ impl<F: PrimeField + Absorb> Verifier<F> {
                     "Failed to evaluate instance MLE".to_string(),
                 ))?;
 
-        // Slightly differs from the formula in the paper, since our mle is little endian encoded
+        // This slightly differs from the formula in the paper, since our mle is little endian encoded
         // Also, the instance comes first in our z vector
         let v_z = (F::one() - r_y[r_y.len() - 1]) * v_instance + r_y[r_y.len() - 1] * v_w;
 
+        // TODO: provide `mat_mle_fixed` as oracle for clarity
         let mut gamma_coeff = F::one();
         let mut batched_poly_computed_last_eval = F::zero();
         for mat_mle in matrices_mle {
