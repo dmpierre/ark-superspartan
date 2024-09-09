@@ -1,0 +1,21 @@
+[package]
+name = "ark-superspartan"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+folding-schemes = { git = "https://github.com/dmpierre/sonobe" }
+ark-ff = { version = "^0.4.0", default-features = false }
+ark-bn254 = { version = "^0.4.0", default-features = false }
+ark-poly = { version = "^0.4.0", default-features = false, features = ["parallel"] }
+ark-crypto-primitives = { version = "^0.4.0", default-features = false, features = ["sponge"] }
+ark-r1cs-std = { version = "0.4.0", default-features = false, features = ["parallel"] }
+ark-relations = { version = "^0.4.0", default-features = false }
+ark-std = { version = "^0.4.0", default-features = false, features = ["parallel"] }
+rand = "0.8.5"
+espresso_subroutines = { git = "https://github.com/EspressoSystems/hyperplonk", package = "subroutines" }
+
+[patch.crates-io]
+ark-r1cs-std = { git = "https://github.com/winderica/r1cs-std", branch="cherry-pick" }
+ark-bn254 = { git = "https://github.com/arnaucube/ark-curves-cherry-picked", branch="cherry-pick"}
+ark-grumpkin = { git = "https://github.com/arnaucube/ark-curves-cherry-picked", branch="cherry-pick"}
