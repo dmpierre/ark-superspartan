@@ -121,7 +121,7 @@ impl<F: PrimeField + Absorb> Prover<F> {
         let tau = compute_tau_challenge(&matrices_mle, &instance, &mut transcript, ccs.s);
         let g = Prover::compute_g_polynomial(&tau, &matrices_mle, &z_mle_hypercube_evals, &ccs)
             .or(Err(PolyIOPErrors::InvalidProver(
-                "Failed to compute batched polynomial".to_string(),
+                "Failed to compute g polynomial".to_string(),
             )))?;
 
         let sumcheck_proof_g = IOPSumCheck::<F, PoseidonSponge<F>>::prove(&g, &mut transcript)?;
